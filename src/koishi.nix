@@ -25,5 +25,5 @@ in writeScriptBin "koishi" ''
   export PATH=$PATH:${makeBinPath [ nodejs ]}
   # koishi won't interpolate when config is not writable
   cp --no-preserve=mode ${configfile} koishi.json
-  ${deps}/node_modules/.bin/koishi
+  ${deps}/node_modules/.bin/koishi "$@"
 ''
