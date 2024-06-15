@@ -20,4 +20,5 @@ jobs:
           yarn
         fi
         ./build.sh
+        nix run .#update
     - uses: stefanzweifel/git-auto-commit-action@v5.0.1
