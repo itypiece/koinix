@@ -15,10 +15,6 @@ jobs:
     - name: update
       run: |
         nix flake update
-        cd locker
-        if [ ! -d node_modules ]; then
-          yarn
-        fi
-        ./build.sh
+
         nix run .#update
     - uses: stefanzweifel/git-auto-commit-action@v5.0.1
