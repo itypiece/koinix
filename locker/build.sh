@@ -4,4 +4,5 @@ yarn ts-node src/index.ts
 yarn ts-node src/remove_invalid_packages.ts
 cd lock
 npm i --package-lock-only --legacy-peer-deps --force
+npm i koishi-plugin-chatluna
 cp * ../../generated/
