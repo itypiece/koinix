@@ -15,10 +15,6 @@ jobs:
     - name: update
       run: |
         nix flake update
-        cd locker
-        yarn
-        ./build.sh
-        cd ../../
         nix run .#update
     - name: build
       run: |
