@@ -20,10 +20,12 @@ config: let
     else if elem x validPlugins then acc ++ [x]
     else throw "Unknown koishi plugin: ${x}") [] plugins);
   configfile = writeText "koishi.json" (strings.toJSON config);
+  packageJson = writeText "package.json" (strings.toJSON { dependencies = {}; });
 in writeScriptBin "koishi" ''
   #!${runtimeShell}
   export PATH=$PATH:${makeBinPath [ nodejs ]}
   # koishi won't interpolate when config is not writable
   cp --no-preserve=mode ${configfile} koishi.json
+  cp --no-preserve=mode ${packageJson} package.json
   ${deps}/node_modules/.bin/koishi "$@"
 ''
