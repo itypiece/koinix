@@ -13,7 +13,13 @@
         export PATH=$PATH:${pkgs.lib.makeBinPath (with pkgs; [
           prefetch-npm-deps nodejs yarn
         ])}
-
+        cd locker
+        if [ ! -d node_modules ]; then
+          yarn
+        fi
+        ./build.sh
+        cp ./lock/* ../generated
+        cd ..
         npmDepsHash=$(prefetch-npm-deps ./generated/package-lock.json)
         cat > ./generated/hash.nix <<EOF
         {
