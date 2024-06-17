@@ -3,5 +3,5 @@ rm -rf lock && mkdir lock
 yarn ts-node src/index.ts
 yarn ts-node src/remove_invalid_packages.ts
 cd lock
-npm install
+npm i --package-lock-only --legacy-peer-deps
 cp * ../../generated/
